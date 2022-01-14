@@ -72,16 +72,14 @@ def ExcluirArquivo(arquivo):
 #### 
 def SubstituirCaracter(de, para, arquivo):
     try:
-        with open(arquivo, "rt") as fin:
-            with open(arquivo+'2', "wt") as fout:
-                print('Substituindo "|" por ";" em ',arquivo)
-                for line in fin:
-                    fout.write(line.replace('|', ';'))
+        print('Substituindo '+de+' por '+para+' no arquivo '+arquivo+'!')
+        os.system("sed -i 's/"+de+"/"+para+"/g' "+arquivo)
+        print('Substituição realizada com sucesso!')
     except:
-        print('Arquivo',pastaDestino+i,'.txt não modificado!')
+        print('Arquivo',arquivo,' não modificado!')
 
 
-####| CONECTAR AO SFTP E BAIXAR OS ARQUIVOS |####
+####| CONEXÃO AO SFTP |####
 ConectaSFT(HOST, PORTA, USER, SENHA)
 
 for i in arqs:
@@ -90,8 +88,7 @@ for i in arqs:
     
     ####| SUBSTITUINDO '|' POR ';' |####
     SubstituirCaracter("|",";",pastaDestino+i+".txt")
-    ExcluirArquivo(pastaDestino+i+".txt")
-    os.rename(pastaDestino+i+".txt2", pastaDestino+i+".txt")
+    SubstituirCaracter("--\|\"","",pastaDestino+i+".txt")
     
     ####| EXCLUI ARQUIVO .ZIP |####  
     ExcluirArquivo(pastaDestino+i+".zip")
