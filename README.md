@@ -1,5 +1,3 @@
-Aqui está o README.md atualizado com o link para o LinkedIn:
-
 # SFTP Paramiko
 
 Este projeto implementa uma automação utilizando o **Paramiko**, uma biblioteca Python para interagir com servidores SFTP. Ele realiza tarefas como transferência de arquivos, descompactação e manipulação de conteúdo, otimizando processos de integração de dados.
